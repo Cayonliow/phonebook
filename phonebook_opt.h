@@ -5,10 +5,12 @@
 
 /* TODO: After modifying the original version, uncomment the following
  * line to set OPT properly */
-// #define OPT 1
+
+#define OPT 1
 typedef struct __PHONE_BOOK_ENTRY {
     char lastName[MAX_LAST_NAME_SIZE];
-    char firstName[16];
+    /*1at version: Changing the size of the data structure*/
+    /*char firstName[16];
     char email[16];
     char phone[10];
     char cell[10];
@@ -16,7 +18,7 @@ typedef struct __PHONE_BOOK_ENTRY {
     char addr2[16];
     char city[16];
     char state[2];
-    char zip[5];
+    char zip[5];*/
     struct __PHONE_BOOK_ENTRY *pNext;
 } entry;
 
