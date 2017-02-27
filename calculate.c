@@ -24,7 +24,8 @@ int main(void)
     }
     fclose(fp);
 
-    fp = fopen("opt.txt", "r");
+    //fp = fopen("opt.txt", "r");
+    fp = fopen("opt_hash.txt","r");
     if (!fp) {
         fp = fopen("orig.txt", "r");
         if (!fp) {
