@@ -6,7 +6,7 @@
 #include "phonebook_opt_hash.h"
 
 /*by BKDRHash function*/
-
+//try DJBHash
 unsigned int BKDRHash(char *str)
 {
     unsigned int seed = 131; //(2^n)-1, n>=5
@@ -18,9 +18,21 @@ unsigned int BKDRHash(char *str)
     return (hash & 0x7FFFFFFF) % TABLE_SIZE;
 }
 
+unsigned int DJBHash(char *str)
+{
+    unsigned int hash = 5381;
+
+    while (*str) {
+        hash += (hash << 5) + (*str++);
+    }
+
+    return (hash & 0x7FFFFFFF) % TABLE_SIZE;
+}
+
 entry *findName(char lastName[], entry *e[])
 {
-    unsigned int hash_value = BKDRHash(lastName);
+    //unsigned int hash_value = BKDRHash(lastName);
+    unsigned int hash_value = DJBHash(lastName);
     entry *temp = e[hash_value];
 
     while (temp != NULL) {
@@ -33,7 +45,8 @@ entry *findName(char lastName[], entry *e[])
 
 void append(char lastName[], entry *e[])
 {
-    unsigned int hash_value = BKDRHash(lastName);
+    //unsigned int hash_value = BKDRHash(lastName);
+    unsigned int hash_value = DJBHash(lastName);
     entry *temp;
 
     if (!e[hash_value]) {

@@ -31,5 +31,6 @@ typedef struct __LAST_NAME_ENTRY {
 entry *findName(char lastName[], entry *e[]);
 void append(char lastName[], entry *e[]);
 unsigned int BKDRHash(char *str);
+unsigned int DJBHash(char *str);
 
 #endif
